@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+import csv
+
+# charger le fichier CSV avec Pandas
+Dog_licensing = pd.read_csv(r"C:\Users\33782\Desktop\M2 MSI\S2\Certification\Python\NYC_Dog_Licensing_Dataset.csv", sep=";")
+
+# initialiser un dictionnaire pour stocker les occurrences
+occurrences = {}
+
+# boucler sur chaque ligne du fichier
+for index, row in Dog_licensing.iterrows():
+
+    # extraire la valeur que vous voulez compter, par exemple, la huitième colonne
+    value = row[7]
+
+    # si la valeur est déjà dans le dictionnaire, incrémenter son occurrence
+    if value in occurrences:
+        occurrences[value] += 1
+
+    # sinon, ajouter la valeur au dictionnaire avec une occurrence de 1
+    else:
+        occurrences[value] = 1
+
+# imprimer le dictionnaire des occurrences
+print(occurrences.head(20))
